@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <img src="/logo.svg" alt="Beam Bots logo" class="hero-logo">
+    <h1 class="hero-title">Resilient Robotics on the BEAM</h1>
+    <p class="hero-subtitle">
+      A framework for building fault-tolerant robotics applications in Elixir using familiar OTP patterns.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ config.extra.docs_url }}" class="btn btn-primary btn-lg">Get Started</a>
+      <a href="{{ config.extra.github_url }}" class="btn btn-secondary btn-lg">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Beam Bots -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">The Insight</span>
+      <h2 class="section-title">ROS Patterns Are OTP Patterns</h2>
+      <p class="section-subtitle">
+        PubSub, request/response services, lifecycle nodes, parameter systems&mdash;ROS2 reinvents what the BEAM already provides. Beam Bots brings robotics to Elixir's battle-tested foundation.
+      </p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-title">ROS2 Approach</div>
+        <div class="card-text">
+          <p>PubSub for inter-node communication</p>
+          <p>Services for request/response</p>
+          <p>Actions for long-running tasks</p>
+          <p>Lifecycle nodes for state management</p>
+          <p>Parameter system for configuration</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Elixir Equivalent</div>
+        <div class="card-text">
+          <p>Phoenix.PubSub, Registry, process messaging</p>
+          <p>GenServer.call/3</p>
+          <p>Supervised Task with progress messages</p>
+          <p>GenServer with state transitions</p>
+          <p>ETS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Built for Production Robotics</h2>
+      <p class="section-subtitle">
+        Everything you need to build reliable robot systems, powered by OTP supervision and Elixir's expressive syntax.
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon">&#x1f9e9;</div>
+        <div class="card-title">Declarative DSL</div>
+        <div class="card-text">
+          Define robot topology with code that mirrors physical structure. Links, joints, sensors, and actuators nested as they exist in reality.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f6e1;</div>
+        <div class="card-title">Topology-Based Supervision</div>
+        <div class="card-text">
+          Supervision trees mirror your robot's structure for fault isolation. A failing gripper doesn't crash the whole system.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f4cf;</div>
+        <div class="card-title">Physical Units</div>
+        <div class="card-text">
+          Express measurements naturally with the <code>~u</code> sigil: <code>~u(90 degree)</code>, <code>~u(0.5 meter)</code>, <code>~u(10 newton_meter)</code>.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f4d0;</div>
+        <div class="card-title">Forward Kinematics</div>
+        <div class="card-text">
+          Compute link positions using Nx tensors. GPU-accelerated on supported systems for real-time position queries.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f4e1;</div>
+        <div class="card-title">Hierarchical PubSub</div>
+        <div class="card-text">
+          Subscribe to sensor data by path with type filtering. Get all IMU data from the left arm with a single subscription.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f504;</div>
+        <div class="card-title">URDF Export</div>
+        <div class="card-text">
+          Export to URDF for visualisation in Gazebo or integration with ROS tools. One definition, multiple ecosystems.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code Example -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="code-section">
+      <div class="code-description">
+        <h3>Code That Reads Like a Specification</h3>
+        <p>
+          This pan-tilt camera mount definition shows how Beam Bots' DSL mirrors physical robot structure. The nesting in the code directly reflects the kinematic chain.
+        </p>
+        <p>
+          Because it's built on Elixir macros, you can metaprogram your robots&mdash;use loops to avoid repetition, or write DSL extensions that transform definitions at compile time.
+        </p>
+      </div>
+      <div class="code-block">
+        {{ section.content | safe }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Where It Runs -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">From Prototype to Production</h2>
+      <p class="section-subtitle">
+        The same code runs everywhere&mdash;prototype in a notebook, deploy to embedded hardware, scale across machines.
+      </p>
+    </div>
+
+    <div class="platform-list">
+      <div class="platform-item">
+        <span>&#x1f4d3;</span>
+        <span>Interactive Notebooks</span>
+      </div>
+      <div class="platform-item">
+        <span>&#x1f353;</span>
+        <span>Raspberry Pi &amp; Embedded Linux</span>
+      </div>
+      <div class="platform-item">
+        <span>&#x1f916;</span>
+        <span>Multi-Robot Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Getting Started -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="install-box">
+      <h2>Get Started in Seconds</h2>
+      <p>Install with Igniter for automatic project setup:</p>
+      <code>mix igniter.install bb</code>
+      <p>Then explore the <a href="{{ config.extra.docs_url }}/tutorials/your-first-robot.html">tutorials</a> to build your first robot.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

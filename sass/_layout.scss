@@ -1,0 +1,87 @@
+/*
+ * SPDX-FileCopyrightText: 2025 James Harton
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+.container-narrow {
+  max-width: $max-width-narrow;
+}
+
+.section {
+  padding: $spacing-4xl 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-3xl 0;
+  }
+}
+
+.section-alt {
+  background-color: var(--bg-secondary);
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-xl;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap-sm {
+  gap: $spacing-sm;
+}
+
+.gap-md {
+  gap: $spacing-md;
+}
+
+.gap-lg {
+  gap: $spacing-lg;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}

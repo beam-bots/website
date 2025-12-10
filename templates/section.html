@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <h1>Blog</h1>
+      <p class="section-subtitle">Updates, tutorials, and insights from the Beam Bots project.</p>
+    </div>
+
+    <div class="blog-list">
+      {% set pages = paginator.pages | default(value=section.pages) %}
+      {% for page in pages %}
+      <article class="blog-card">
+        <a href="{{ page.permalink }}">
+          <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
+          <h2 class="blog-title">{{ page.title }}</h2>
+          {% if page.description %}
+          <p class="blog-excerpt">{{ page.description }}</p>
+          {% endif %}
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

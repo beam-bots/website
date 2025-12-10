@@ -1,0 +1,53 @@
+/*
+ * SPDX-FileCopyrightText: 2025 James Harton
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+// Syntax highlighting for Zola's CSS-based highlighting
+// Uses z- prefixed classes and CSS custom properties for theming
+
+pre code {
+  // Base text colour for code
+  color: var(--text-secondary);
+
+  // All spans should inherit unless overridden
+  span {
+    color: inherit;
+  }
+
+  // Keywords (defmodule, do, end, use, etc.)
+  [class*="z-keyword"] {
+    color: var(--syntax-keyword);
+  }
+
+  // Module/class names
+  .z-entity {
+    color: var(--syntax-entity);
+  }
+
+  // Strings and string types
+  .z-string {
+    color: var(--syntax-string);
+  }
+
+  .z-storage {
+    color: var(--syntax-string);
+  }
+
+  // Symbols/atoms (:base_link, :revolute, etc.)
+  .z-constant {
+    color: var(--syntax-constant);
+  }
+
+  // Comments
+  .z-comment {
+    color: var(--syntax-comment);
+    font-style: italic;
+  }
+
+  // Punctuation - keep subtle
+  .z-punctuation {
+    color: var(--syntax-punctuation);
+  }
+}

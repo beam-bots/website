@@ -1,16 +1,21 @@
-# The URL the site will be built for
+# SPDX-FileCopyrightText: 2025 James Harton
+#
+# SPDX-License-Identifier: Apache-2.0
+
 base_url = "https://beambots.dev"
-
-# Whether to automatically compile all Sass files in the sass directory
+title = "Beam Bots"
+description = "Resilient Robotics on the BEAM - A framework for building fault-tolerant robotics applications in Elixir"
 compile_sass = true
-
-# Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+highlight_theme = "css"
 
 [extra]
-# Put all your custom variables here
+author = "James Harton"
+github_url = "https://github.com/beam-bots/bb"
+docs_url = "https://hexdocs.pm/bb"
+hex_url = "https://hex.pm/packages/bb"

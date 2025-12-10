@@ -1,0 +1,90 @@
+/*
+ * SPDX-FileCopyrightText: 2025 James Harton
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+body {
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: 700;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  font-weight: 600;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  margin-bottom: $spacing-md;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  color: var(--text-secondary);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: var(--accent-primary);
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--accent-secondary);
+  }
+}
+
+strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.9em;
+  background-color: var(--code-inline-bg);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
+}
+
+pre {
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  background-color: var(--bg-code);
+  padding: $spacing-lg;
+  border-radius: $border-radius;
+  overflow-x: auto;
+  margin-bottom: $spacing-lg;
+  border: 1px solid var(--border-color);
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
