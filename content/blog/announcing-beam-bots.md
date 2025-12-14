@@ -2,6 +2,7 @@
 title = "Announcing Beam Bots: Resilient Robotics on the BEAM"
 date = 2025-12-09
 description = "Introducing Beam Bots, a framework for building fault-tolerant robotics applications in Elixir using familiar OTP patterns."
+tags = ['progress']
 +++
 
 I've been working on something I'm excited to share: [Beam Bots](https://github.com/beam-bots/bb), a framework for building resilient robotics applications in Elixir. It's early days - the code hasn't controlled any physical robots yet - but the core is there and I'm looking for feedback and contributors.
