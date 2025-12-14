@@ -135,47 +135,49 @@
   </div>
 </section>
 
-<!-- Where It Runs -->
+<!-- Recent Posts -->
+{% set blog = get_section(path="blog/_index.md") %}
+{% if blog.pages %}
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">From Prototype to Production</h2>
+      <h2 class="section-title">Recent Posts</h2>
       <p class="section-subtitle">
-        The same code runs everywhere&mdash;prototype in a notebook, deploy to embedded hardware, scale across machines.
+        Updates, tutorials, and insights from the Beam Bots project.
       </p>
     </div>
 
-    <div class="platform-list">
-      <div class="platform-item">
-        <span>&#x1f4d3;</span>
-        <span>Interactive Notebooks</span>
-      </div>
-      <div class="platform-item">
-        <span>&#x1f353;</span>
-        <span>Raspberry Pi &amp; Embedded Linux</span>
-      </div>
-      <div class="platform-item">
-        <span>&#x1f916;</span>
-        <span>Multi-Robot Systems</span>
-      </div>
+    <div class="recent-posts-grid">
+      {% for page in blog.pages | slice(end=3) %}
+      <article class="recent-post-card">
+        <a href="{{ page.permalink }}">
+          <div class="blog-card-meta">
+            <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
+            {% if page.extra.author %}
+            <div class="blog-author blog-author-small">
+              <img src="https://github.com/{{ page.extra.author.github }}.png" alt="{{ page.extra.author.name }}" class="blog-author-avatar">
+              <span class="blog-author-name">{{ page.extra.author.name }}</span>
+            </div>
+            {% endif %}
+          </div>
+          <h3 class="blog-title">{{ page.title }}</h3>
+          {% if page.description %}
+          <p class="blog-excerpt">{{ page.description }}</p>
+          {% endif %}
+        </a>
+      </article>
+      {% endfor %}
     </div>
-  </div>
-</section>
 
-<!-- Getting Started -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="install-box">
-      <h2>Get Started in Seconds</h2>
-      <p>Install with Igniter for automatic project setup:</p>
-      <code>mix igniter.install bb</code>
-      <p>Then explore the <a href="{{ config.extra.docs_url }}/tutorials/your-first-robot.html">tutorials</a> to build your first robot.</p>
+    <div class="recent-posts-more">
+      <a href="/blog/" class="btn btn-secondary">View all posts</a>
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- Sponsors -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Thank You to Our Sponsors</h2>

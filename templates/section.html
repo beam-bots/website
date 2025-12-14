@@ -15,7 +15,15 @@
       {% for page in pages %}
       <article class="blog-card">
         <a href="{{ page.permalink }}">
-          <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
+          <div class="blog-card-meta">
+            <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
+            {% if page.extra.author %}
+            <div class="blog-author blog-author-small">
+              <img src="https://github.com/{{ page.extra.author.github }}.png" alt="{{ page.extra.author.name }}" class="blog-author-avatar">
+              <span class="blog-author-name">{{ page.extra.author.name }}</span>
+            </div>
+            {% endif %}
+          </div>
           <h2 class="blog-title">{{ page.title }}</h2>
           {% if page.description %}
           <p class="blog-excerpt">{{ page.description }}</p>
