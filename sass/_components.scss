@@ -505,6 +505,53 @@
   margin-top: $spacing-xl;
 }
 
+// Generic page
+.page-header {
+  margin-bottom: $spacing-3xl;
+  padding-bottom: $spacing-xl;
+  border-bottom: 1px solid var(--border-color);
+
+  h1 {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.page-lead {
+  font-size: $font-size-xl;
+  color: var(--text-secondary);
+}
+
+.page-content {
+  h2 {
+    margin-top: $spacing-3xl;
+    margin-bottom: $spacing-lg;
+    color: var(--accent-secondary);
+  }
+
+  h3 {
+    margin-top: $spacing-2xl;
+    margin-bottom: $spacing-md;
+  }
+
+  ul, ol {
+    margin-bottom: $spacing-lg;
+    padding-left: $spacing-xl;
+
+    li {
+      margin-bottom: $spacing-sm;
+      color: var(--text-secondary);
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+}
+
 // Sponsors
 .sponsor-grid {
   display: flex;
