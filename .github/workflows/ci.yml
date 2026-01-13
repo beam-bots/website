@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2025 James Harton
+# SPDX-FileCopyrightText: 2026 James Harton
 #
 # SPDX-License-Identifier: Apache-2.0
 
@@ -18,7 +18,7 @@ jobs:
     name: zola build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           submodules: 'recursive'
       - run: sudo snap install --edge zola
@@ -31,9 +31,23 @@ jobs:
     name: REUSE compliance
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: REUSE compliance check
-        uses: fsfe/reuse-action@v6
+        uses: fsfe/reuse-action@772649cfa03a64a08c458c7cca9a6a473d74e7f9 # v6
+
+  canary:
+    name: canary
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - build
+      - reuse
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.build.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ needs.reuse.result }}" != "success" ]]; then exit 1; fi
+          echo "All checks passed!"
 
   deploy:
     name: Deploy site to GitHub Pages
