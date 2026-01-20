@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock %}
+{% block description %}{{ section.description }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container container-md">
+    <header class="page-header">
+      <h1>{{ section.title }}</h1>
+      <p class="page-lead">{{ section.description }}</p>
+    </header>
+
+    <div class="docs-nav-cards">
+      <a href="/docs/getting-started/" class="docs-nav-card">
+        <span class="docs-nav-icon">&#128640;</span>
+        <span class="docs-nav-title">Getting Started</span>
+        <span class="docs-nav-desc">Install BB and build your first robot</span>
+      </a>
+      <a href="/docs/ecosystem/" class="docs-nav-card">
+        <span class="docs-nav-icon">&#128230;</span>
+        <span class="docs-nav-title">Ecosystem</span>
+        <span class="docs-nav-desc">Explore servo drivers, IK solvers, and utilities</span>
+      </a>
+    </div>
+
+    <div class="docs-grid">
+      <div class="docs-category">
+        <h2>Tutorials</h2>
+        <p>Step-by-step guides to learn Beam Bots from scratch.</p>
+        <ol class="docs-list">
+          {% for item in config.extra.docs.tutorials %}
+          <li><a href="{{ config.extra.docs_url }}/{{ item.path }}" target="_blank" rel="noopener">{{ item.title }}</a></li>
+          {% endfor %}
+        </ol>
+      </div>
+
+      <div class="docs-category">
+        <h2>How-To Guides</h2>
+        <p>Practical recipes for common tasks.</p>
+        <ul class="docs-list">
+          {% for item in config.extra.docs.how_to %}
+          <li><a href="{{ config.extra.docs_url }}/{{ item.path }}" target="_blank" rel="noopener">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="docs-category">
+        <h2>Topics</h2>
+        <p>In-depth explanations of key concepts.</p>
+        <ul class="docs-list">
+          {% for item in config.extra.docs.topics %}
+          <li><a href="{{ config.extra.docs_url }}/{{ item.path }}" target="_blank" rel="noopener">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="docs-category">
+        <h2>Reference</h2>
+        <p>Technical specifications and API details.</p>
+        <ul class="docs-list">
+          {% for item in config.extra.docs.reference %}
+          <li><a href="{{ config.extra.docs_url }}/{{ item.path }}" target="_blank" rel="noopener">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="docs-hexdocs-link">
+      <a href="{{ config.extra.docs_url }}" target="_blank" rel="noopener" class="btn btn-secondary">
+        View full API documentation on HexDocs &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

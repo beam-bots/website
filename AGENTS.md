@@ -15,8 +15,9 @@ This is the Beam Bots documentation website, built with [Zola](https://www.getzo
 ## Common Commands
 
 ```bash
-zola serve    # Local development server
-zola build    # Build static site
+zola serve          # Local development server
+zola build          # Build static site
+pipx run reuse lint # Check REUSE license compliance
 ```
 
 ## Structure

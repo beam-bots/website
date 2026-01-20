@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+{% block description %}{{ page.description }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container container-md">
+    <header class="page-header">
+      <h1>{{ page.title }}</h1>
+      <p class="page-lead">{{ page.description }}</p>
+    </header>
+
+    {% for category in config.extra.ecosystem %}
+    <div class="ecosystem-category">
+      <h2>{{ category.name }}</h2>
+      <div class="ecosystem-grid">
+        {% for package in category.packages %}
+        <div class="ecosystem-card">
+          <div class="ecosystem-card-header">
+            <span class="ecosystem-card-name">{{ package.name }}</span>
+            <span class="ecosystem-card-links">
+              {% if not package.github_only %}
+              <a href="https://hexdocs.pm/{{ package.name }}" target="_blank" rel="noopener" title="Documentation">Docs</a>
+              <a href="https://hex.pm/packages/{{ package.name }}" target="_blank" rel="noopener" title="Hex.pm">Hex</a>
+              {% endif %}
+              <a href="https://github.com/beam-bots/{{ package.name }}" target="_blank" rel="noopener" title="GitHub">GitHub</a>
+            </span>
+          </div>
+          <p class="ecosystem-card-desc">{{ package.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="ecosystem-contribute">
+      <p>Want to contribute a package? Check out the <a href="https://github.com/beam-bots/bb/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">contribution guidelines</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
