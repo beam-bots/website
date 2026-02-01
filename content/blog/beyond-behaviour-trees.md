@@ -195,7 +195,7 @@ Plus, they're already built on the patterns Elixir gives you for free.
 - [Reactor on Hex](https://hex.pm/packages/reactor)
 - [bb on Hex](https://hex.pm/packages/bb)
 - [bb_example_wx200 on GitHub](https://github.com/beam-bots/bb_example_wx200)
-- [Discord](https://discord.gg/McZmMaR34P)
+- [Discord](https://discord.gg/QSag7Vuc4N)
 
 ### Behaviour Tree Implementations (for comparison)
 
