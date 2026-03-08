@@ -22,7 +22,7 @@ You can also report organisation-wide issues via the [.github repository securit
 
 Security and vulnerability reports are a special case. These issues must be reproduced, written, verified, and analysed by a human being. We cannot allow a machine-to-team pipeline for high-priority security-related issues.
 
-For more details, see the [Security & Vulnerability Reports section of our AI Policy](https://github.com/beam-bots/.github/blob/main/AI_POLICY.md#security--vulnerability-reports).
+For more details, see the [Security & Vulnerability Reports section of our AI Policy](https://github.com/beam-bots/.github/blob/main/AI_POLICY.md).
 
 ## Response Time
 
