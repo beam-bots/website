@@ -17,6 +17,6 @@ permissions:
 
 jobs:
   CI:
-    uses: beam-bots/.github/.github/workflows/zola-ci.yml@26fa9830f1a4eb009d5b5d4d0b35d23d98868a9e # main
+    uses: beam-bots/.github/.github/workflows/zola-ci.yml@588b8730cc97a9f070bbd62d3a1e432ed2afc550 # main
     with:
       enable-deploy: ${{ github.ref == 'refs/heads/main' }}
