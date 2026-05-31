@@ -5,9 +5,9 @@
 <section class="hero">
   <div class="container">
     <img src="/logo.svg" alt="Beam Bots logo" class="hero-logo">
-    <h1 class="hero-title">Resilient Robotics on the BEAM</h1>
+    <h1 class="hero-title">Resilient Robotics with Elixir</h1>
     <p class="hero-subtitle">
-      A framework for building fault-tolerant robotics applications in Elixir using familiar OTP patterns.
+      Describe your hardware in a declarative DSL and get OTP supervision, kinematics, and real-time control out of the box.
     </p>
     <div class="hero-actions">
       <a href="{{ config.extra.docs_url }}" class="btn btn-primary btn-lg">Get Started</a>
@@ -21,32 +21,32 @@
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="badge">The Insight</span>
-      <h2 class="section-title">ROS Patterns Are OTP Patterns</h2>
+      <span class="badge">Why Elixir</span>
+      <h2 class="section-title">The BEAM Was Built for This</h2>
       <p class="section-subtitle">
-        PubSub, request/response services, lifecycle nodes, parameter systems&mdash;ROS2 reinvents what the BEAM already provides. Beam Bots brings robotics to Elixir's battle-tested foundation.
+        Robots are concurrent, failure-prone, real-time systems spread across flaky hardware&mdash;the exact problem the BEAM has solved for telecoms for decades, using the toolkit you already reach for in Elixir.
       </p>
     </div>
 
     <div class="grid grid-2">
       <div class="card">
-        <div class="card-title">ROS2 Approach</div>
+        <div class="card-title">What robotics demands</div>
         <div class="card-text">
-          <p>PubSub for inter-node communication</p>
-          <p>Services for request/response</p>
-          <p>Actions for long-running tasks</p>
-          <p>Lifecycle nodes for state management</p>
-          <p>Parameter system for configuration</p>
+          <p>A sensor drops out or a motor stalls mid-operation</p>
+          <p>Dozens of sensors and actuators acting at once</p>
+          <p>Control loops that can't miss their deadline</p>
+          <p>Tuning and debugging without stopping the robot</p>
+          <p>Coordinating across multiple boards or machines</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-title">Elixir Equivalent</div>
+        <div class="card-title">What the BEAM already gives you</div>
         <div class="card-text">
-          <p>Phoenix.PubSub, Registry, process messaging</p>
-          <p>GenServer.call/3</p>
-          <p>Supervised Task with progress messages</p>
-          <p>GenServer with state transitions</p>
-          <p>ETS</p>
+          <p>Supervision restarts the failed part, not the whole robot</p>
+          <p>A lightweight process per component&mdash;as many as you need</p>
+          <p>Soft-real-time scheduling, no stop-the-world GC pauses</p>
+          <p>Hot code reloading and live introspection on a running system</p>
+          <p>Distributed Erlang: message passing across nodes, built in</p>
         </div>
       </div>
     </div>
@@ -57,9 +57,9 @@
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Built for Production Robotics</h2>
+      <h2 class="section-title">Built for Resilient Robotics</h2>
       <p class="section-subtitle">
-        Everything you need to build reliable robot systems, powered by OTP supervision and Elixir's expressive syntax.
+        The building blocks for reliable robot systems, powered by OTP supervision and Elixir's expressive syntax.
       </p>
     </div>
 
@@ -68,7 +68,7 @@
         <div class="card-icon">&#x1f9e9;</div>
         <div class="card-title">Declarative DSL</div>
         <div class="card-text">
-          Define robot topology with code that mirrors physical structure. Links, joints, sensors, and actuators nested as they exist in reality.
+          Define robot topology with code that mirrors physical structure&mdash;links, joints, sensors, and actuators nested as they exist in reality, in a syntax that stays readable as your robot grows.
         </div>
       </div>
 
@@ -81,18 +81,10 @@
       </div>
 
       <div class="card">
-        <div class="card-icon">&#x1f4cf;</div>
-        <div class="card-title">Physical Units</div>
-        <div class="card-text">
-          Express measurements naturally with the <code>~u</code> sigil: <code>~u(90 degree)</code>, <code>~u(0.5 meter)</code>, <code>~u(10 newton_meter)</code>.
-        </div>
-      </div>
-
-      <div class="card">
         <div class="card-icon">&#x1f4d0;</div>
-        <div class="card-title">Forward Kinematics</div>
+        <div class="card-title">Forward &amp; Inverse Kinematics</div>
         <div class="card-text">
-          Compute link positions using Nx tensors. GPU-accelerated on supported systems for real-time position queries.
+          Compute link positions with Nx tensors, GPU-accelerated where supported, and solve reach with pluggable IK solvers&mdash;Damped Least Squares and FABRIK.
         </div>
       </div>
 
@@ -105,10 +97,18 @@
       </div>
 
       <div class="card">
-        <div class="card-icon">&#x1f504;</div>
-        <div class="card-title">URDF Export</div>
+        <div class="card-icon">&#x1f50c;</div>
+        <div class="card-title">Hardware Drivers Included</div>
         <div class="card-text">
-          Export to URDF for visualisation in Gazebo or integration with ROS tools. One definition, multiple ecosystems.
+          Drive real servos out of the box&mdash;PCA9685, Dynamixel, Feetech, and Raspberry Pi GPIO&mdash;with more drivers across the ecosystem.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">&#x1f579;</div>
+        <div class="card-title">Live Visualisation &amp; Control</div>
+        <div class="card-text">
+          Drive and monitor your robot in real time with Livebook widgets or a Phoenix LiveView dashboard.
         </div>
       </div>
     </div>
@@ -122,10 +122,13 @@
       <div class="code-description">
         <h3>Code That Reads Like a Specification</h3>
         <p>
-          This pan-tilt camera mount definition shows how Beam Bots' DSL mirrors physical robot structure. The nesting in the code directly reflects the kinematic chain.
+          This is a complete pan-tilt camera mount&mdash;every link, joint, and movement limit, in a few dozen lines. It reads more like a description of the hardware than a program that builds it.
         </p>
         <p>
-          Because it's built on Elixir macros, you can metaprogram your robots&mdash;use loops to avoid repetition, or write DSL extensions that transform definitions at compile time.
+          And it's ordinary Elixir&mdash;version it, test its geometry, refactor it freely. Need a six-legged robot? Loop over the leg instead of copy-pasting it.
+        </p>
+        <p>
+          <a href="https://hexdocs.pm/bb/01-first-robot.html" class="btn btn-primary">Start with Your First Robot &rarr;</a>
         </p>
       </div>
       <div class="code-block">
@@ -176,11 +179,30 @@
 </section>
 {% endif %}
 
-<!-- Sponsors -->
+<!-- Get Involved -->
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Thank You to Our Sponsors</h2>
+      <span class="badge">Get Involved</span>
+      <h2 class="section-title">A Young Project, Moving Fast</h2>
+      <p class="section-subtitle">
+        Beam Bots is early and built in the open&mdash;real hardware, real drivers, real momentum. Whether you want to drive a servo, write a driver, improve the docs, or just follow along, there's room for you.
+      </p>
+    </div>
+
+    <div class="hero-actions">
+      <a href="/community/" class="btn btn-primary btn-lg">Join the Community</a>
+      <a href="https://github.com/beam-bots/.github/blob/main/CONTRIBUTING.md" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Contributing Guide</a>
+      <a href="{{ config.extra.discord_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+  </div>
+</section>
+
+<!-- Sponsors -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Supported By</h2>
       <p class="section-subtitle">
         This project is made possible by the generous support of our sponsors.
       </p>
@@ -208,6 +230,11 @@
           <div class="sponsor-contribution">GitHub Sponsor</div>
         </div>
       </a>
+    </div>
+
+    <div class="recent-posts-more">
+      <p class="section-subtitle">Beam Bots is solo-maintained&mdash;sponsorship keeps the work going.</p>
+      <a href="https://github.com/sponsors/jimsynz" class="btn btn-primary" target="_blank" rel="noopener">Sponsor Beam Bots &rarr;</a>
     </div>
   </div>
 </section>
