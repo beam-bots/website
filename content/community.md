@@ -5,7 +5,7 @@ description = "Get Beam Bots, ask questions, report bugs, request features, and 
 
 Beam Bots is a young, fast-moving project built in the open. Whether you want to
 drive your first servo, write a hardware driver, improve the docs, or just follow
-along — there's room for you here.
+along, there's room for you here.
 
 ## Get Beam Bots
 
@@ -23,27 +23,27 @@ which adds the dependency and sets up the initial configuration for you:
 New to the framework? Work through [Your First Robot](https://hexdocs.pm/bb/01-first-robot.html)
 on HexDocs.
 
-The wider ecosystem — servo drivers, IK solvers, sensors, visualisation, and more — is
+The wider ecosystem (servo drivers, IK solvers, sensors, visualisation, and more) is
 published on Hex as [packages that build on bb](https://hex.pm/packages/bb/dependents).
 
 ## Ask a Question
 
 The fastest way to get help is {{ discord() }}. Drop in,
-say hello, and ask away — questions from newcomers are genuinely welcome.
+say hello, and ask away. Questions from newcomers are genuinely welcome.
 
 You can also open an issue on the relevant repository if a question is better
 tracked in writing.
 
 ## Report a Bug
 
-Found something broken? Open an issue on the repository where the problem lives —
-for the core framework, that's [beam-bots/bb](https://github.com/beam-bots/bb/issues).
+Found something broken? Open an issue on the repository where the problem lives.
+For the core framework, that's [beam-bots/bb](https://github.com/beam-bots/bb/issues).
 Each package in the ecosystem has its own issue tracker on [GitHub](https://github.com/beam-bots).
 
 A good bug report includes what you expected to happen, what actually happened, and
 the smallest set of steps that reproduces it.
 
-For **security vulnerabilities**, please don't open a public issue — follow the
+For **security vulnerabilities**, please don't open a public issue. Follow the
 [security policy](/security/) instead.
 
 ## Request a Feature
@@ -51,7 +51,7 @@ For **security vulnerabilities**, please don't open a public issue — follow th
 Feature requests and larger changes are tracked in the
 [proposals repository](https://github.com/beam-bots/proposals). Before building
 anything significant, open a proposal there first. The best proposals focus on the
-*use case* — what you're trying to do and why — rather than the implementation
+*use case* (what you're trying to do and why) rather than the implementation
 details.
 
 Smaller enhancements are fine as an issue on the relevant repository.
@@ -65,11 +65,11 @@ ground rules.
 
 A few good places to start:
 
-- **Documentation** — the most valuable contribution you can make. Spotted a typo
+- **Documentation**: the most valuable contribution you can make. Spotted a typo
   or an unclear explanation? A pull request is preferred over an issue.
-- **Hardware drivers** — got a servo, sensor, or board that isn't supported yet?
+- **Hardware drivers**: got a servo, sensor, or board that isn't supported yet?
   The existing [packages on GitHub](https://github.com/beam-bots) are worth reading as templates.
-- **Pick up a proposal** — the [proposals repository](https://github.com/beam-bots/proposals)
+- **Pick up a proposal**: the [proposals repository](https://github.com/beam-bots/proposals)
   is where planned work lives. Find one you'd like to build and say so on
   {{ discord() }} so we don't double up.
 

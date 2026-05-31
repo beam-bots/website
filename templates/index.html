@@ -7,7 +7,7 @@
     <img src="/logo.svg" alt="Beam Bots logo" class="hero-logo">
     <h1 class="hero-title">Resilient Robotics with Elixir</h1>
     <p class="hero-subtitle">
-      Describe your hardware in a declarative DSL and get OTP supervision, kinematics, and real-time control out of the box.
+      Build any robot, from a single servo to a six-axis arm, with supervision, kinematics, and real-time control built in.
     </p>
     <div class="hero-actions">
       <a href="{{ config.extra.docs_url }}" class="btn btn-primary btn-lg">Get Started</a>
@@ -24,7 +24,7 @@
       <span class="badge">Why Elixir</span>
       <h2 class="section-title">The BEAM Was Built for This</h2>
       <p class="section-subtitle">
-        Robots are concurrent, failure-prone, real-time systems spread across flaky hardware&mdash;the exact problem the BEAM has solved for telecoms for decades, using the toolkit you already reach for in Elixir.
+        Robots are concurrent, failure-prone, real-time systems on flaky hardware. The BEAM (Elixir's runtime) has spent decades solving exactly that in telecoms, with the same toolkit you already reach for in Elixir.
       </p>
     </div>
 
@@ -32,21 +32,25 @@
       <div class="card">
         <div class="card-title">What robotics demands</div>
         <div class="card-text">
-          <p>A sensor drops out or a motor stalls mid-operation</p>
-          <p>Dozens of sensors and actuators acting at once</p>
-          <p>Control loops that can't miss their deadline</p>
-          <p>Tuning and debugging without stopping the robot</p>
-          <p>Coordinating across multiple boards or machines</p>
+          <ul>
+            <li>Resilience in the face of partial hardware failure</li>
+            <li>Concurrency across dozens of sensors and actuators</li>
+            <li>Real-time control under deadline pressure</li>
+            <li>Live observability and tuning without restarts</li>
+            <li>Distributed coordination across boards and machines</li>
+          </ul>
         </div>
       </div>
       <div class="card">
-        <div class="card-title">What the BEAM already gives you</div>
+        <div class="card-title">From the BEAM, for free</div>
         <div class="card-text">
-          <p>Supervision restarts the failed part, not the whole robot</p>
-          <p>A lightweight process per component&mdash;as many as you need</p>
-          <p>Soft-real-time scheduling, no stop-the-world GC pauses</p>
-          <p>Hot code reloading and live introspection on a running system</p>
-          <p>Distributed Erlang: message passing across nodes, built in</p>
+          <ul>
+            <li>Supervision trees that isolate failure</li>
+            <li>A lightweight process per component</li>
+            <li>Soft-real-time scheduling without GC pauses</li>
+            <li>Hot code reload with live introspection</li>
+            <li>Distributed Erlang across nodes</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -68,7 +72,7 @@
         <div class="card-icon">&#x1f9e9;</div>
         <div class="card-title">Declarative DSL</div>
         <div class="card-text">
-          Define robot topology with code that mirrors physical structure&mdash;links, joints, sensors, and actuators nested as they exist in reality, in a syntax that stays readable as your robot grows.
+          Define robot topology with code that mirrors physical structure. Links, joints, sensors, and actuators nest as they exist in reality, in a syntax that stays readable as your robot grows.
         </div>
       </div>
 
@@ -84,7 +88,7 @@
         <div class="card-icon">&#x1f4d0;</div>
         <div class="card-title">Forward &amp; Inverse Kinematics</div>
         <div class="card-text">
-          Compute link positions with Nx tensors, GPU-accelerated where supported, and solve reach with pluggable IK solvers&mdash;Damped Least Squares and FABRIK.
+          Compute link positions with Nx tensors, GPU-accelerated where supported, and solve reach with pluggable IK solvers: Damped Least Squares and FABRIK.
         </div>
       </div>
 
@@ -100,7 +104,7 @@
         <div class="card-icon">&#x1f50c;</div>
         <div class="card-title">Hardware Drivers Included</div>
         <div class="card-text">
-          Drive real servos out of the box&mdash;PCA9685, Dynamixel, Feetech, and Raspberry Pi GPIO&mdash;with more drivers across the ecosystem.
+          Drive real servos out of the box (PCA9685, Dynamixel, Feetech, and Raspberry Pi GPIO), with more drivers across the ecosystem.
         </div>
       </div>
 
@@ -122,10 +126,10 @@
       <div class="code-description">
         <h3>Code That Reads Like a Specification</h3>
         <p>
-          This is a complete pan-tilt camera mount&mdash;every link, joint, and movement limit, in a few dozen lines. It reads more like a description of the hardware than a program that builds it.
+          This is a complete pan-tilt camera mount (every link, joint, and movement limit) in a few dozen lines. It reads more like a description of the hardware than a program that builds it.
         </p>
         <p>
-          And it's ordinary Elixir&mdash;version it, test its geometry, refactor it freely. Need a six-legged robot? Loop over the leg instead of copy-pasting it.
+          And it's ordinary Elixir: version it, test its geometry, refactor it freely. Need a six-legged robot? Loop over the leg instead of copy-pasting it.
         </p>
         <p>
           <a href="https://hexdocs.pm/bb/01-first-robot.html" class="btn btn-primary">Start with Your First Robot &rarr;</a>
@@ -186,7 +190,7 @@
       <span class="badge">Get Involved</span>
       <h2 class="section-title">A Young Project, Moving Fast</h2>
       <p class="section-subtitle">
-        Beam Bots is early and built in the open&mdash;real hardware, real drivers, real momentum. Whether you want to drive a servo, write a driver, improve the docs, or just follow along, there's room for you.
+        Beam Bots is early and built in the open. Real hardware, real drivers, real momentum. Whether you want to drive a servo, write a driver, improve the docs, or just follow along, there's room for you.
       </p>
     </div>
 
@@ -233,7 +237,7 @@
     </div>
 
     <div class="recent-posts-more">
-      <p class="section-subtitle">Beam Bots is solo-maintained&mdash;sponsorship keeps the work going.</p>
+      <p class="section-subtitle">Beam Bots is solo-maintained. Sponsorship keeps the work going.</p>
       <a href="https://github.com/sponsors/jimsynz" class="btn btn-primary" target="_blank" rel="noopener">Sponsor Beam Bots &rarr;</a>
     </div>
   </div>

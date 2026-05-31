@@ -117,6 +117,23 @@
   color: var(--text-primary);
 }
 
+.grid-2 .card-title {
+  margin-bottom: $spacing-md;
+}
+
+.grid-2 .card-text ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.grid-2 .card-text li {
+  margin-bottom: $spacing-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .card-text {
   color: var(--text-secondary);
   font-size: $font-size-sm;
