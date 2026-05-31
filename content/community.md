@@ -81,7 +81,7 @@ All participation is governed by our
 
 ## Follow Along
 
-New developments land roughly every fortnight on the [blog](/blog/), and the
+New developments land roughly every month on the [blog](/blog/), and the
 [Atom feed](/atom.xml) will keep you up to date.
 
 ## Support the Project

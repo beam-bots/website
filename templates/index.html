@@ -10,8 +10,8 @@
       Build any robot, from a single servo to a six-axis arm, with supervision, kinematics, and real-time control built in.
     </p>
     <div class="hero-actions">
-      <a href="{{ config.extra.docs_url }}" class="btn btn-primary btn-lg">Get Started</a>
-      <a href="{{ config.extra.github_url }}" class="btn btn-secondary btn-lg">View on GitHub</a>
+      <a href="{{ config.extra.docs_url }}/01-first-robot.html" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get Started</a>
+      <a href="{{ config.extra.github_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">View on GitHub</a>
       <a href="{{ config.extra.discord_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Join Discord</a>
     </div>
   </div>
@@ -30,7 +30,7 @@
 
     <div class="grid grid-2">
       <div class="card">
-        <div class="card-title">What robotics demands</div>
+        <h3 class="card-title">What robotics demands</h3>
         <div class="card-text">
           <ul>
             <li>Resilience in the face of partial hardware failure</li>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-title">From the BEAM, for free</div>
+        <h3 class="card-title">From the BEAM, for free</h3>
         <div class="card-text">
           <ul>
             <li>Supervision trees that isolate failure</li>
@@ -70,15 +70,15 @@
     <div class="grid grid-3">
       <div class="card">
         <div class="card-icon">&#x1f9e9;</div>
-        <div class="card-title">Declarative DSL</div>
+        <h3 class="card-title">Declarative DSL</h3>
         <div class="card-text">
           Define robot topology with code that mirrors physical structure. Links, joints, sensors, and actuators nest as they exist in reality, in a syntax that stays readable as your robot grows.
         </div>
       </div>
 
       <div class="card">
-        <div class="card-icon">&#x1f6e1;</div>
-        <div class="card-title">Topology-Based Supervision</div>
+        <div class="card-icon">&#x1f6e1;&#xfe0f;</div>
+        <h3 class="card-title">Topology-Based Supervision</h3>
         <div class="card-text">
           Supervision trees mirror your robot's structure for fault isolation. A failing gripper doesn't crash the whole system.
         </div>
@@ -86,7 +86,7 @@
 
       <div class="card">
         <div class="card-icon">&#x1f4d0;</div>
-        <div class="card-title">Forward &amp; Inverse Kinematics</div>
+        <h3 class="card-title">Forward &amp; Inverse Kinematics</h3>
         <div class="card-text">
           Compute link positions with Nx tensors, GPU-accelerated where supported, and solve reach with pluggable IK solvers: Damped Least Squares and FABRIK.
         </div>
@@ -94,7 +94,7 @@
 
       <div class="card">
         <div class="card-icon">&#x1f4e1;</div>
-        <div class="card-title">Hierarchical PubSub</div>
+        <h3 class="card-title">Hierarchical PubSub</h3>
         <div class="card-text">
           Subscribe to sensor data by path with type filtering. Get all IMU data from the left arm with a single subscription.
         </div>
@@ -102,15 +102,15 @@
 
       <div class="card">
         <div class="card-icon">&#x1f50c;</div>
-        <div class="card-title">Hardware Drivers Included</div>
+        <h3 class="card-title">Hardware Drivers Included</h3>
         <div class="card-text">
           Drive real servos out of the box (PCA9685, Dynamixel, Feetech, and Raspberry Pi GPIO), with more drivers across the ecosystem.
         </div>
       </div>
 
       <div class="card">
-        <div class="card-icon">&#x1f579;</div>
-        <div class="card-title">Live Visualisation &amp; Control</div>
+        <div class="card-icon">&#x1f579;&#xfe0f;</div>
+        <h3 class="card-title">Live Visualisation &amp; Control</h3>
         <div class="card-text">
           Drive and monitor your robot in real time with Livebook widgets or a Phoenix LiveView dashboard.
         </div>
@@ -131,9 +131,9 @@
         <p>
           And it's ordinary Elixir: version it, test its geometry, refactor it freely. Need a six-legged robot? Loop over the leg instead of copy-pasting it.
         </p>
-        <p>
-          <a href="https://hexdocs.pm/bb/01-first-robot.html" class="btn btn-primary">Start with Your First Robot &rarr;</a>
-        </p>
+        <div class="hero-actions hero-actions--single">
+          <a href="https://hexdocs.pm/bb/01-first-robot.html" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Start with Your First Robot</a>
+        </div>
       </div>
       <div class="code-block">
         {{ section.content | safe }}
@@ -147,7 +147,7 @@
 {% if blog.pages %}
 <section class="section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header section-header--centered">
       <h2 class="section-title">Recent Posts</h2>
       <p class="section-subtitle">
         Updates, tutorials, and insights from the Beam Bots project.
@@ -238,7 +238,9 @@
 
     <div class="recent-posts-more">
       <p class="section-subtitle">Beam Bots is solo-maintained. Sponsorship keeps the work going.</p>
-      <a href="https://github.com/sponsors/jimsynz" class="btn btn-primary" target="_blank" rel="noopener">Sponsor Beam Bots &rarr;</a>
+      <div class="hero-actions hero-actions--single">
+        <a href="https://github.com/sponsors/jimsynz" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Sponsor Beam Bots</a>
+      </div>
     </div>
   </div>
 </section>

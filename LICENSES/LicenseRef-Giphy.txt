@@ -1,0 +1,2 @@
+This file is sourced from Giphy (giphy.com). Use is governed by Giphy's
+Terms of Service: https://giphy.com/terms
