@@ -31,6 +31,10 @@ published on Hex as [packages that build on bb](https://hex.pm/packages/bb/depen
 The fastest way to get help is {{ discord() }}. Drop in,
 say hello, and ask away. Questions from newcomers are genuinely welcome.
 
+Our channel is graciously hosted by the [Nerves Project](https://nerves-project.org/)
+on their Discord server, so you'll find the wider Elixir-on-hardware community
+right next door.
+
 You can also open an issue on the relevant repository if a question is better
 tracked in writing.
 
