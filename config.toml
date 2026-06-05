@@ -20,7 +20,7 @@ dark_theme = "github-dark"
 
 [extra]
 author = "James Harton"
-github_url = "https://github.com/beam-bots/bb"
+github_url = "https://github.com/beam-bots"
 docs_url = "https://hexdocs.pm/bb"
 hex_url = "https://hex.pm/packages/bb"
 discord_url = "https://discord.gg/QSag7Vuc4N"
