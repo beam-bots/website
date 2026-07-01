@@ -1,0 +1,12 @@
+<figure style="margin: 0;">
+  <video
+    src="{{ src }}"
+    controls
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    style="width: 100%; height: auto; border-radius: 4px;"
+  ></video>
+  {% if caption %}<figcaption style="font-size: 0.9em; opacity: 0.75; margin-top: 0.5em;">{{ caption }}</figcaption>{% endif %}
+</figure>
