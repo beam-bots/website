@@ -74,14 +74,6 @@ $cyan-bright: #5ff7f7;
   --card-hover-bg: rgba(255, 255, 255, 0.04);
   --nav-bg: rgba(44, 19, 61, 0.95);
   --code-inline-bg: rgba(255, 255, 255, 0.05);
-
-  // Syntax highlighting - dark
-  --syntax-keyword: #{$purple-bright};
-  --syntax-entity: #{$cyan-bright};
-  --syntax-string: #{lighten($purple-mid, 20%)};
-  --syntax-constant: #{$cyan-bright};
-  --syntax-comment: #{$grey-mid};
-  --syntax-punctuation: #{$grey-light};
 }
 
 @media (prefers-color-scheme: light) {
@@ -100,13 +92,5 @@ $cyan-bright: #5ff7f7;
     --card-hover-bg: rgba(44, 19, 61, 0.05);
     --nav-bg: rgba(255, 255, 255, 0.95);
     --code-inline-bg: rgba(44, 19, 61, 0.05);
-
-    // Syntax highlighting - light
-    --syntax-keyword: #{$purple-dark};
-    --syntax-entity: #{darken($cyan, 25%)};
-    --syntax-string: #{$purple-mid};
-    --syntax-constant: #{darken($cyan, 25%)};
-    --syntax-comment: #7a6a8c;
-    --syntax-punctuation: #4a3a5c;
   }
 }

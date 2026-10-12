@@ -1,0 +1,60 @@
+{
+  "name": "beam-bots-light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#f8f4fc",
+    "editor.foreground": "#4a3a5c"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "keyword"
+      ],
+      "settings": {
+        "foreground": "#7228bb"
+      }
+    },
+    {
+      "scope": [
+        "entity"
+      ],
+      "settings": {
+        "foreground": "#0ca7a9"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "storage"
+      ],
+      "settings": {
+        "foreground": "#af4bf9"
+      }
+    },
+    {
+      "scope": [
+        "constant"
+      ],
+      "settings": {
+        "foreground": "#0ca7a9"
+      }
+    },
+    {
+      "scope": [
+        "comment"
+      ],
+      "settings": {
+        "foreground": "#7a6a8c",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "punctuation"
+      ],
+      "settings": {
+        "foreground": "#4a3a5c"
+      }
+    }
+  ]
+}

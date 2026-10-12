@@ -15,8 +15,9 @@ taxonomies = [
 
 [markdown.highlighting]
 style = "class"
-light_theme = "github-light"
-dark_theme = "github-dark"
+light_theme = "beam-bots-light"
+dark_theme = "beam-bots-dark"
+extra_themes = ["highlighting/beam-bots-light.json", "highlighting/beam-bots-dark.json"]
 
 [extra]
 author = "James Harton"
