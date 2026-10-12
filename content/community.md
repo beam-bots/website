@@ -28,7 +28,7 @@ published on Hex as [packages that build on bb](https://hex.pm/packages/bb/depen
 
 ## Ask a Question
 
-The fastest way to get help is {{ discord() }}. Drop in,
+The fastest way to get help is [Discord]({{ config.extra.discord_url }}). Drop in,
 say hello, and ask away. Questions from newcomers are genuinely welcome.
 
 Our channel is graciously hosted by the [Nerves Project](https://nerves-project.org/)
@@ -75,9 +75,9 @@ A few good places to start:
   The existing [packages on GitHub](https://github.com/beam-bots) are worth reading as templates.
 - **Pick up a proposal**: the [proposals repository](https://github.com/beam-bots/proposals)
   is where planned work lives. Find one you'd like to build and say so on
-  {{ discord() }} so we don't double up.
+  [Discord]({{ config.extra.discord_url }}) so we don't double up.
 
-Not sure where to start? Ask on {{ discord() }} and we'll point you at
+Not sure where to start? Ask on [Discord]({{ config.extra.discord_url }}) and we'll point you at
 something that needs doing.
 
 All participation is governed by our

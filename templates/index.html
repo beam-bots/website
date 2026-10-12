@@ -155,7 +155,7 @@
     </div>
 
     <div class="recent-posts-grid">
-      {% for page in blog.pages | slice(end=3) %}
+      {% for page in blog.pages[:3] %}
       <article class="recent-post-card">
         <a href="{{ page.permalink }}">
           <div class="blog-card-meta">
