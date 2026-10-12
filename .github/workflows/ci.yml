@@ -12,11 +12,67 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  CI:
-    uses: beam-bots/.github/.github/workflows/zola-ci.yml@48f70fe83c31cc0cc6a668f242d63077dc7a452d # main
-    with:
-      enable-deploy: ${{ github.ref == 'refs/heads/main' }}
+  build:
+    name: zola build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: 'recursive'
+      - name: Install Zola
+        run: |
+          set -euo pipefail
+          zola_version=$(awk '$1 == "zola" {print $2; exit}' .tool-versions)
+          if [ -z "$zola_version" ]; then
+            echo ".tool-versions does not pin zola" >&2
+            exit 1
+          fi
+          curl -sfL "https://github.com/getzola/zola/releases/download/v${zola_version}/zola-v${zola_version}-x86_64-unknown-linux-gnu.tar.gz" | tar xz
+          sudo mv zola /usr/local/bin/
+          zola --version
+      - run: zola build
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: public/
+
+  reuse:
+    name: REUSE compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: REUSE compliance check
+        uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6
+
+  # Named to match the `CI / canary` check the org-wide main ruleset requires,
+  # which is the name this job had when it lived in a reusable workflow.
+  canary:
+    name: CI / canary
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - build
+      - reuse
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.build.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ needs.reuse.result }}" != "success" ]]; then exit 1; fi
+          echo "All checks passed!"
+
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
