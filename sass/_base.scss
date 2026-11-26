@@ -88,3 +88,34 @@ pre {
   background-color: var(--accent-primary);
   color: #fff;
 }
+
+// Keyboard navigation and motion preferences apply across every page.
+:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+#main-content:focus {
+  outline: none;
+}
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -6rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-primary);
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

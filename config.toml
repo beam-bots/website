@@ -4,7 +4,7 @@
 
 base_url = "https://beambots.dev"
 title = "Beam Bots"
-description = "Resilient Robotics with Elixir - a framework for building fault-tolerant robots with a declarative DSL, OTP supervision, and real-time control"
+description = "An Elixir framework for resilient robot systems. Model robot topology, supervise hardware components, and coordinate sensing and motion."
 compile_sass = true
 build_search_index = true
 generate_feeds = true

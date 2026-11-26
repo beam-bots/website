@@ -1,240 +1,140 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Hero -->
 <section class="hero">
-  <div class="container">
-    <img src="/logo.svg" alt="Beam Bots logo" class="hero-logo">
-    <h1 class="hero-title">Resilient Robotics with Elixir</h1>
-    <p class="hero-subtitle">
-      Build any robot, from a single servo to a six-axis arm, with supervision, kinematics, and real-time control built in.
-    </p>
-    <div class="hero-actions">
-      <a href="{{ config.extra.docs_url }}/01-first-robot.html" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get Started</a>
-      <a href="{{ config.extra.github_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">View on GitHub</a>
-      <a href="{{ config.extra.discord_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Join Discord</a>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Elixir / OTP / Robotics</p>
+      <h1>Resilience, built into your robot.</h1>
+      <p class="hero-subtitle">An Elixir framework for resilient robot systems. Model robot topology, supervise hardware components, and coordinate sensing and motion.</p>
+      <div class="hero-actions">
+        <a href="{{ config.extra.docs_url }}/01-first-robot.html" class="btn btn-primary">Build your first robot <span aria-hidden="true">↗</span></a>
+        <a href="{{ config.extra.github_url }}" class="text-link">Explore the source <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="hero-note">Open source · Apache 2.0 · Built on the BEAM</p>
     </div>
-  </div>
-</section>
-
-<!-- Why Beam Bots -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header">
-      <span class="badge">Why Elixir</span>
-      <h2 class="section-title">Sweet BEAM was made for this</h2>
-      <p class="section-subtitle">
-        Robots are concurrent, failure-prone, real-time systems on flaky hardware. The BEAM (Elixir's runtime) has spent decades solving exactly that in telecoms, with the same toolkit you already reach for in Elixir.
-      </p>
-    </div>
-
-    <div class="grid grid-2">
-      <div class="card">
-        <h3 class="card-title">What robotics demands</h3>
-        <div class="card-text">
+    <figure class="architecture">
+      <div class="figure-heading"><span>Framework / Overview</span><span>Illustrative topology</span></div>
+      <svg class="topology" viewBox="0 0 520 350" role="img" aria-labelledby="topology-title topology-desc">
+        <title id="topology-title">A robot's structure becomes its supervision structure</title>
+        <desc id="topology-desc">A base link branches into a sensor and a shoulder joint. The shoulder leads to an arm link, with a tool joint and its actuator supervised beneath it. The tool branch is outlined to illustrate a supervision boundary.</desc>
+        <defs><pattern id="diagram-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.12"/></pattern></defs>
+        <rect width="520" height="350" fill="url(#diagram-grid)"/>
+        <g class="diagram-lines" fill="none" stroke-width="1.5"><path d="M70 66V116H106 M70 116V183H106 M250 183H282V258H320 M400 276V301"/></g>
+        <rect class="diagram-boundary" x="300" y="215" width="200" height="128" rx="4"/>
+        <text class="diagram-label" x="314" y="233">SUPERVISED BRANCH</text>
+        <g class="diagram-node"><rect x="30" y="25" width="174" height="42" rx="4"/><rect x="106" y="95" width="144" height="42" rx="4"/><rect x="106" y="162" width="144" height="42" rx="4"/><rect x="320" y="244" width="160" height="32" rx="4"/><rect x="320" y="301" width="160" height="32" rx="4"/></g>
+        <g class="diagram-text"><text x="46" y="51">base_link</text><text x="122" y="121">sensor</text><text x="122" y="188">shoulder</text><text x="336" y="265">tool_joint</text><text x="336" y="322">actuator</text></g>
+        <text class="diagram-label" x="276" y="166">arm_link</text>
+        <circle class="diagram-junction" cx="282" cy="183" r="5"/>
+      </svg>
+      <ul class="topology-mobile" aria-label="Example supervision hierarchy">
+        <li><span>base_link</span>
           <ul>
-            <li>Resilience in the face of partial hardware failure</li>
-            <li>Concurrency across dozens of sensors and actuators</li>
-            <li>Real-time control under deadline pressure</li>
-            <li>Live observability and tuning without restarts</li>
-            <li>Distributed coordination across boards and machines</li>
+            <li><span>sensor</span></li>
+            <li><span>shoulder</span>
+              <ul><li><span>arm_link</span>
+                <ul class="supervised-branch"><li><span>tool_joint</span>
+                  <ul><li><span>actuator</span></li></ul>
+                </li></ul>
+              </li></ul>
+            </li>
           </ul>
-        </div>
-      </div>
-      <div class="card">
-        <h3 class="card-title">From the BEAM, for free</h3>
-        <div class="card-text">
-          <ul>
-            <li>Supervision trees that isolate failure</li>
-            <li>A lightweight process per component</li>
-            <li>Soft-real-time scheduling without GC pauses</li>
-            <li>Hot code reload with live introspection</li>
-            <li>Distributed Erlang across nodes</li>
-          </ul>
-        </div>
-      </div>
+        </li>
+      </ul>
+      <figcaption><strong>Physical structure. Supervised processes.</strong><span>Links and joints organise the robot. OTP supervisors organise the work.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section definition-section" aria-labelledby="definition-title">
+  <div class="container definition-grid">
+    <div>
+      <p class="eyebrow">01 / Describe</p>
+      <h2 id="definition-title">The structure is<br> the starting point.</h2>
+      <p class="section-subtitle">Define links, joints and motion limits in ordinary Elixir. Beam Bots turns that description into a robot model and a supervision hierarchy.</p>
+      <p>Keep geometry, units and constraints together. Add sensors and actuators where they belong in the topology.</p>
+      <a class="text-link" href="{{ config.extra.docs_url }}/01-first-robot.html">Walk through the definition <span aria-hidden="true">→</span></a>
+      <p class="prerequisites">The first tutorial needs Elixir 1.19+ and Beam Bots. Start with a robot definition; connect hardware when you’re ready.</p>
+    </div>
+    <div class="code-example">
+      <div class="figure-heading"><span>robot.ex</span><span>Topology example</span></div>
+      {{ section.content | safe }}
+      <p class="code-caption">One joint, explicit limits. Extend the same structure as your robot grows.</p>
     </div>
   </div>
 </section>
 
-<!-- Features -->
-<section class="section">
+<section class="section" aria-labelledby="capabilities-title">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Built for Resilient Robotics</h2>
-      <p class="section-subtitle">
-        The building blocks for reliable robot systems, powered by OTP supervision and Elixir's expressive syntax.
-      </p>
-    </div>
-
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="card-icon">&#x1f9e9;</div>
-        <h3 class="card-title">Declarative DSL</h3>
-        <div class="card-text">
-          Define robot topology with code that mirrors physical structure. Links, joints, sensors, and actuators nest as they exist in reality, in a syntax that stays readable as your robot grows.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">&#x1f6e1;&#xfe0f;</div>
-        <h3 class="card-title">Topology-Based Supervision</h3>
-        <div class="card-text">
-          Supervision trees mirror your robot's structure for fault isolation. A failing gripper doesn't crash the whole system.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">&#x1f4d0;</div>
-        <h3 class="card-title">Forward &amp; Inverse Kinematics</h3>
-        <div class="card-text">
-          Compute link positions with Nx tensors, GPU-accelerated where supported, and solve reach with pluggable IK solvers: Damped Least Squares and FABRIK.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">&#x1f4e1;</div>
-        <h3 class="card-title">Hierarchical PubSub</h3>
-        <div class="card-text">
-          Subscribe to sensor data by path with type filtering. Get all IMU data from the left arm with a single subscription.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">&#x1f50c;</div>
-        <h3 class="card-title">Hardware Drivers Included</h3>
-        <div class="card-text">
-          Drive real servos out of the box (PCA9685, Dynamixel, Feetech, and Raspberry Pi GPIO), with more drivers across the ecosystem.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">&#x1f579;&#xfe0f;</div>
-        <h3 class="card-title">Live Visualisation &amp; Control</h3>
-        <div class="card-text">
-          Drive and monitor your robot in real time with Livebook widgets or a Phoenix LiveView dashboard.
-        </div>
-      </div>
+    <div class="section-heading"><div><p class="eyebrow">Designed around the system</p><h2 id="capabilities-title">From definition to operation.</h2></div><p>Robotics brings concurrency, partial failure and changing state. The BEAM gives those problems a shared foundation.</p></div>
+    <div class="capability-grid">
+      <article class="capability"><p class="eyebrow">02 / Connect</p><h3>Hardware, behind a common interface.</h3><p>Wire sensors, actuators and controllers into your robot. Use existing drivers or implement the same behaviours for your hardware.</p><a class="text-link" href="https://hex.pm/packages/bb/dependents">Browse packages on Hex <span aria-hidden="true">↗</span></a></article>
+      <article class="capability"><p class="eyebrow">03 / Supervise</p><h3>Give failures a boundary.</h3><p>Supervision follows the robot’s topology. Components run in separate processes, with OTP supervision to isolate failures and manage restarts.</p><a class="text-link" href="{{ config.extra.docs_url }}/supervision-architecture.html">Explore the architecture <span aria-hidden="true">↗</span></a></article>
+      <article class="capability"><p class="eyebrow">04 / Operate</p><h3>Observe, coordinate, adjust.</h3><p>Subscribe to sensor messages, solve motion with pluggable kinematics, and inspect your robot through Livebook or LiveView.</p><a class="text-link" href="{{ config.extra.docs_url }}">Read the guides <span aria-hidden="true">↗</span></a></article>
     </div>
   </div>
 </section>
 
-<!-- Code Example -->
-<section class="section section-alt">
+<section class="section section-alt" aria-labelledby="workbench-title">
   <div class="container">
-    <div class="code-section">
-      <div class="code-description">
-        <h3>Code That Reads Like a Specification</h3>
-        <p>
-          This is a complete pan-tilt camera mount (every link, joint, and movement limit) in a few dozen lines. It reads more like a description of the hardware than a program that builds it.
-        </p>
-        <p>
-          And it's ordinary Elixir: version it, test its geometry, refactor it freely. Need a six-legged robot? Loop over the leg instead of copy-pasting it.
-        </p>
-        <div class="hero-actions hero-actions--single">
-          <a href="https://hexdocs.pm/bb/01-first-robot.html" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Start with Your First Robot</a>
-        </div>
-      </div>
-      <div class="code-block">
-        {{ section.content | safe }}
-      </div>
+    <div class="section-heading"><div><p class="eyebrow">From the workbench</p><h2 id="workbench-title">The framework, in motion.</h2></div><p>Small platforms make useful test beds. These community builds demonstrate control and coordination on real hardware.</p></div>
+    <div class="demonstrations">
+      <figure>
+        <video controls playsinline preload="none" poster="/teleoperation-poster.jpg" aria-label="SO-101 teleoperation demonstration" aria-describedby="teleoperation-caption"><source src="/so101-teleop-damir.mp4" type="video/mp4"><a href="/so101-teleop-damir.mp4">Download the teleoperation video</a></video>
+        <figcaption id="teleoperation-caption"><span class="eyebrow">Teleoperation</span><h3>Motion, from one arm to another.</h3><p>Two SO-101 arms running teleoperation on Beam Bots. Demonstration by Damir Batinović.</p><a class="text-link" href="{{ get_url(path='@/blog/progress-2026-08-02.md') }}">Read the development notes <span aria-hidden="true">→</span></a></figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="none" poster="/balance-poster.jpg" aria-label="Balance bot remote control demonstration" aria-describedby="balance-caption"><source src="/balance-bot-badge-remote-gus.mp4" type="video/mp4"><a href="/balance-bot-badge-remote-gus.mp4">Download the balance bot video</a></video>
+        <figcaption id="balance-caption"><span class="eyebrow">Feedback &amp; control</span><h3>Keeping balance. Taking direction.</h3><p>An NSK Balance Bot driven from a Goatmire badge running AtomVM. Demonstration by Gus Workman.</p><a class="text-link" href="{{ get_url(path='@/blog/progress-2026-10-12.md') }}">Read the build story <span aria-hidden="true">→</span></a></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- Recent Posts -->
 {% set blog = get_section(path="blog/_index.md") %}
 {% if blog.pages %}
-<section class="section">
+<section class="section" aria-labelledby="updates-title">
   <div class="container">
-    <div class="section-header section-header--centered">
-      <h2 class="section-title">Recent Posts</h2>
-      <p class="section-subtitle">
-        Updates, tutorials, and insights from the Beam Bots project.
-      </p>
-    </div>
-
+    <div class="section-heading"><div><p class="eyebrow">Development journal</p><h2 id="updates-title">Built in the open.</h2></div><a class="text-link" href="/blog/">All updates <span aria-hidden="true">→</span></a></div>
     <div class="recent-posts-grid">
       {% for page in blog.pages[:3] %}
       <article class="recent-post-card">
-        <a href="{{ page.permalink }}">
-          <div class="blog-card-meta">
-            <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
-            {% if page.extra.author %}
-            <div class="blog-author blog-author-small">
-              <img src="https://github.com/{{ page.extra.author.github }}.png" alt="{{ page.extra.author.name }}" class="blog-author-avatar">
-              <span class="blog-author-name">{{ page.extra.author.name }}</span>
-            </div>
-            {% endif %}
-          </div>
-          <h3 class="blog-title">{{ page.title }}</h3>
-          {% if page.description %}
-          <p class="blog-excerpt">{{ page.description }}</p>
-          {% endif %}
-        </a>
+        <time class="blog-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %B %Y") }}</time>
+        <h3 class="blog-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
+        {% if page.description %}<p class="blog-excerpt">{{ page.description }}</p>{% endif %}
       </article>
       {% endfor %}
-    </div>
-
-    <div class="recent-posts-more">
-      <a href="/blog/" class="btn btn-secondary">View all posts</a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- Get Involved -->
-<section class="section section-alt">
+<section class="section community-section" aria-labelledby="community-title">
   <div class="container">
-    <div class="section-header">
-      <span class="badge">Get Involved</span>
-      <h2 class="section-title">A Young Project, Moving Fast</h2>
-      <p class="section-subtitle">
-        Beam Bots is early and built in the open. Real hardware, real drivers, real momentum. Whether you want to drive a servo, write a driver, improve the docs, or just follow along, there's room for you.
-      </p>
-    </div>
+    <div class="section-heading"><div><p class="eyebrow">An open-source project</p><h2 id="community-title">Bring your hardware.<br> Share what you learn.</h2></div><div><p>Beam Bots is early and actively evolving. Help shape it with a driver, a bug report, better documentation, or your next build.</p><div class="hero-actions"><a class="btn btn-primary" href="/community/">Get involved <span aria-hidden="true">→</span></a><a class="text-link" href="{{ config.extra.discord_url }}">Talk on Discord <span aria-hidden="true">↗</span></a></div></div></div>
 
-    <div class="hero-actions">
-      <a href="/community/" class="btn btn-primary btn-lg">Join the Community</a>
-      <a href="https://github.com/beam-bots/.github/blob/main/CONTRIBUTING.md" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Contributing Guide</a>
-      <a href="{{ config.extra.discord_url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Join Discord</a>
-    </div>
   </div>
 </section>
-
-<!-- Sponsors -->
-<section class="section">
+<section class="section" aria-labelledby="supporters-title">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Supported By</h2>
-      <p class="section-subtitle">
-        This project is made possible by the generous support of our sponsors.
-      </p>
-    </div>
-
-    <div class="sponsor-grid">
-      <a href="https://alembic.com.au" class="sponsor-card" target="_blank" rel="noopener">
-        <img src="https://github.com/team-alembic.png" alt="Alembic" class="sponsor-avatar">
-        <div class="sponsor-info">
-          <div class="sponsor-name">Alembic</div>
-          <div class="sponsor-contribution">Development Support</div>
-        </div>
-      </a>
-      <a href="https://github.com/fhunleth" class="sponsor-card" target="_blank" rel="noopener">
-        <img src="https://github.com/fhunleth.png" alt="Frank Hunleth" class="sponsor-avatar">
-        <div class="sponsor-info">
-          <div class="sponsor-name">Frank Hunleth</div>
-          <div class="sponsor-contribution">Hardware Donation</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="recent-posts-more">
-      <p class="section-subtitle">Beam Bots is solo-maintained. Sponsorship keeps the work going.</p>
-      <div class="hero-actions hero-actions--single">
-        <a href="https://github.com/sponsors/jimsynz" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Sponsor Beam Bots</a>
+    <div class="section-heading">
+      <div>
+        <h2 id="supporters-title">Supported by</h2>
+        <p class="supporters-intro">Thank you to the people and organisations supporting this work.</p>
       </div>
+      <a class="text-link" href="https://github.com/sponsors/jimsynz">Sponsor Beam Bots <span aria-hidden="true">↗</span></a>
     </div>
+    <ul class="supporter-list">
+      <li>
+        <h3><a href="https://alembic.com.au">Alembic <span aria-hidden="true">↗</span></a></h3>
+        <p>Supports the development of Beam Bots.</p>
+      </li>
+      <li>
+        <h3><a href="https://github.com/fhunleth">Frank Hunleth <span aria-hidden="true">↗</span></a></h3>
+        <p>Donated hardware for the project.</p>
+      </li>
+    </ul>
   </div>
 </section>
 {% endblock %}
