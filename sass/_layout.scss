@@ -16,10 +16,10 @@
 }
 
 .section {
-  padding: $spacing-4xl 0;
+  padding: $spacing-3xl 0;
 
   @media (max-width: $breakpoint-md) {
-    padding: $spacing-3xl 0;
+    padding: $spacing-2xl 0;
   }
 }
 

@@ -16,7 +16,7 @@
       <article class="blog-card">
         <a href="{{ page.permalink }}">
           <div class="blog-card-meta">
-            <time class="blog-date">{{ page.date | date(format="%d %B %Y") }}</time>
+            <time class="blog-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %B %Y") }}</time>
             {% if page.extra.author %}
             <div class="blog-author blog-author-small">
               <img src="https://github.com/{{ page.extra.author.github }}.png" alt="{{ page.extra.author.name }}" class="blog-author-avatar">
@@ -32,6 +32,13 @@
       </article>
       {% endfor %}
     </div>
+    {% if paginator and paginator.number_pagers > 1 %}
+    <nav class="pagination" aria-label="Blog pages">
+      {% if paginator.previous %}<a class="btn btn-secondary" href="{{ paginator.previous }}" rel="prev">← Newer posts</a>{% endif %}
+      <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+      {% if paginator.next %}<a class="btn btn-secondary" href="{{ paginator.next }}" rel="next">Older posts →</a>{% endif %}
+    </nav>
+    {% endif %}
   </div>
 </section>
 {% endblock %}

@@ -35,39 +35,47 @@
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6afe8c7b-0332-4f01-97f6-53617c15758c"></script>
 </head>
 <body>
-  <nav class="nav">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% set nav_path = current_path | default(value="") %}
+  <header class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo">
-        <img src="/logo.svg" alt="Beam Bots logo">
-        <span>Beam Bots</span>
-      </a>
-      <div class="nav-links">
-        <a href="{{ config.extra.docs_url }}" target="_blank" rel="noopener">Docs</a>
-        <a href="https://hex.pm/packages/bb/dependents" target="_blank" rel="noopener">Ecosystem</a>
-        <a href="/blog/">Blog</a>
-        <a href="/community/">Community</a>
-        <a href="{{ config.extra.github_url }}" target="_blank" rel="noopener">GitHub</a>
-        <a href="{{ config.extra.discord_url }}" target="_blank" rel="noopener">Discord</a>
-      </div>
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="" width="36" height="36"><span>Beam Bots</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="{{ config.extra.docs_url }}">Docs <span aria-hidden="true">↗</span></a>
+        <a href="https://hex.pm/packages/bb/dependents">Packages on Hex <span aria-hidden="true">↗</span></a>
+        <a href="/blog/"{% if '/blog/' in nav_path %} aria-current="page"{% endif %}>Blog</a>
+        <a href="/community/"{% if nav_path == '/community/' %} aria-current="page"{% endif %}>Community</a>
+        <a href="{{ config.extra.github_url }}">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <details class="mobile-menu">
+        <summary>Menu <span aria-hidden="true">+</span></summary>
+        <nav aria-label="Mobile navigation">
+          <a href="{{ config.extra.docs_url }}">Docs ↗</a>
+          <a href="https://hex.pm/packages/bb/dependents">Packages on Hex ↗</a>
+          <a href="/blog/"{% if '/blog/' in nav_path %} aria-current="page"{% endif %}>Blog</a>
+          <a href="/community/"{% if nav_path == '/community/' %} aria-current="page"{% endif %}>Community</a>
+          <a href="{{ config.extra.github_url }}">GitHub ↗</a>
+        </nav>
+      </details>
     </div>
-  </nav>
+  </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     {% block content %}{% endblock %}
   </main>
 
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-links">
-        <a href="{{ config.extra.github_url }}" target="_blank" rel="noopener">GitHub</a>
-        <a href="{{ config.extra.hex_url }}" target="_blank" rel="noopener">Hex.pm</a>
-        <a href="{{ config.extra.docs_url }}" target="_blank" rel="noopener">Documentation</a>
+        <a href="{{ config.extra.github_url }}">GitHub</a>
+        <a href="{{ config.extra.hex_url }}">Hex.pm</a>
+        <a href="{{ config.extra.docs_url }}">Documentation</a>
         <a href="/community/">Community</a>
-        <a href="{{ config.extra.discord_url }}" target="_blank" rel="noopener">Discord</a>
+        <a href="{{ config.extra.discord_url }}">Discord</a>
         <a href="/security/">Security</a>
       </div>
       <div class="footer-copy">
-        Apache 2.0 License
+        Open source · Apache 2.0
       </div>
     </div>
   </footer>
